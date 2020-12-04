@@ -13,46 +13,16 @@ From: ubuntu:20.04
     
     ## Install my essentials
     apt-get install build-essential wget curl file git libreadline8 \
-        gdebi-core locales-all moreutils parallel -y
+        locales-all moreutils parallel -y
 
     ## Set up timezone
     export TZ=America/New_York
     ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
 
-    ## Software needed to open openfoam8
-    apt-get install libgl1-mesa-glx libgl1-mesa-dev libdbus-1-3 libdbus-1-dev \
-        libnss3 libxcomp3 libxcomposite1 libxcomposite-dev libxcursor1 \
-        libxcursor-dev libxi6 libxi-dev libxtst6 libxtst-dev libxt6 \
-        libxt-dev libasound2 -y
-
-    ## Graphical libraries needed to open on Roar
-    apt-get install libcanberra-gtk-module libcanberra-gtk3-module -y
-
-    ## Install miniconda3
-    if [ ! -d /usr/local/miniconda ]; then
-        wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
-       	    -O ~/anaconda.sh && \
-	    bash ~/anaconda.sh -b -p /usr/local/miniconda && \
-	    rm ~/anaconda.sh
-    fi
-
-    ## Initialize environment and update conda
-    export PATH=/usr/local/miniconda/bin:${PATH}
-    export LD_LIBRARY_PATH=/usr/local/miniconda/lib:${LD_LIBRARY_PATH}
-    conda update conda
-
-    ## Install spack
-    git clone https://github.com/spack/spack.git
-    mv spack /usr/local
-    . /usr/local/spack/share/spack/setup-env.sh
-
-    ## TODO
-    ## Write install for openfoam8
+    ## Install openfoam8
+    apt-get install openfoam
 
 %environment
-    export SPACK_ROOT=/usr/local/spack
-    export PATH=/usr/local/miniconda/bin:${SPACK_ROOT}/bin:${PATH}
-    export LD_LIBRARY_PATH=/usr/local/miniconda/lib:${LD_LIBRARY_PATH}
     export LC_ALL=en_US.UTF-8
     export LANG=en_US.UTF-8
 
