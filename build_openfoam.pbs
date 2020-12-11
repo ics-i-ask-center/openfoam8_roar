@@ -8,6 +8,7 @@
 #PBS -M jcn23@psu.edu
 #PBS -j oe
 #PBS -o openfoam8_build.log
+#PBS -N openfoam8_build
 
 echo -e "OpenFOAM8 build began at $(date) on $(hostname)\n"
 
