@@ -11,10 +11,5 @@ iask@ics.psu.edu]])
 -- Get value of $HOME
 local home = os.getenv("HOME")
 
--- Create root path
-local root = string.format("%s/work/sw7/spack/opt/spack/linux-rhel7-ivybridge/gcc-8.3.1", home)
+-- Might need to hardcode the paths
 
--- Assign paths to each crucial environment variables
-
-
--- Set environment variables that might not exist in default environment
